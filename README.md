@@ -11,6 +11,7 @@ This first implementation includes:
 - Kafka topic constants
 - `producer-service` for REST log ingestion
 - `processor-service` for validation, enrichment, and dead-letter routing
+- `analyzer-service` for high error-rate alert detection
 - Docker Compose for Kafka, PostgreSQL, and OpenSearch
 - Architecture and API documentation
 
@@ -31,9 +32,17 @@ processor-service
       +--> Kafka: processed-logs
       |
       +--> Kafka: dead-letter-logs
+
+Kafka: processed-logs
+      |
+      v
+analyzer-service
+      |
+      v
+Kafka: alert-events
 ```
 
-Next services will add alert detection, OpenSearch indexing, PostgreSQL alert storage, and query APIs.
+Next services will add OpenSearch indexing, PostgreSQL alert storage, and query APIs.
 
 ## Tech Stack
 
@@ -63,6 +72,12 @@ Run processor:
 
 ```powershell
 mvn spring-boot:run -pl processor-service
+```
+
+Run analyzer:
+
+```powershell
+mvn spring-boot:run -pl analyzer-service
 ```
 
 Submit a log:

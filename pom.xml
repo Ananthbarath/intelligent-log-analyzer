@@ -20,6 +20,7 @@
         <module>log-common</module>
         <module>producer-service</module>
         <module>processor-service</module>
+        <module>analyzer-service</module>
     </modules>
 
     <properties>
