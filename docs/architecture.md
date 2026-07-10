@@ -6,7 +6,7 @@
 
 `processor-service` consumes raw log events, validates required fields, normalizes payloads, enriches logs with a fingerprint, and publishes processed logs. Invalid logs are routed to a dead-letter topic.
 
-`analyzer-service` consumes processed log events and publishes alert events when a service reaches the configured error threshold inside the configured time window.
+`analyzer-service` consumes processed log events, stores generated alerts in PostgreSQL, and publishes alert events when a service reaches the configured error threshold inside the configured time window.
 
 ## Kafka Topics
 

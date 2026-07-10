@@ -12,6 +12,7 @@ This first implementation includes:
 - `producer-service` for REST log ingestion
 - `processor-service` for validation, enrichment, and dead-letter routing
 - `analyzer-service` for high error-rate alert detection
+- PostgreSQL storage for generated alerts
 - Docker Compose for Kafka, PostgreSQL, and OpenSearch
 - Architecture and API documentation
 
@@ -38,11 +39,13 @@ Kafka: processed-logs
       v
 analyzer-service
       |
+      +--> PostgreSQL: alerts
+      |
       v
 Kafka: alert-events
 ```
 
-Next services will add OpenSearch indexing, PostgreSQL alert storage, and query APIs.
+Next services will add OpenSearch indexing and query APIs.
 
 ## Tech Stack
 

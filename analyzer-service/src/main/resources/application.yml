@@ -4,6 +4,13 @@ server:
 spring:
   application:
     name: analyzer-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/log_analyzer
+    username: log_user
+    password: log_pass
+  sql:
+    init:
+      mode: always
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
